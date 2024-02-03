@@ -3,11 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const form = document.getElementById('form');
   const input = document.getElementById('input');
+  const usernameInput = document.getElementById('username');
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    if (input.value) {
-      socket.emit('chat message', input.value);
+    if (input.value && usernameInput.value) {
+      socket.emit('chat message', { username: usernameInput.value, message: input.value });
       input.value = '';
     }
   });
@@ -18,19 +19,3 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('messages').appendChild(item);
   });
 });
-
-document.getElementById('form').addEventListener('submit', (e) => {
-  e.preventDefault();
-  const input = document.getElementById('input');
-  const usernameInput = document.getElementById('username');
-  if (input.value && usernameInput.value) {
-    socket.emit('chat message', { username: usernameInput.value, message: input.value });
-    input.value = '';
-  }
-});
-
-document.getElementById('form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission behavior
-    // Your message sending logic here
-});
-
