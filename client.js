@@ -19,3 +19,5 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('messages').appendChild(item);
   });
 });
+
+const socket = io(l'umononyt.github.io/real-time-chat/');
