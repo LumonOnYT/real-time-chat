@@ -28,3 +28,9 @@ document.getElementById('form').addEventListener('submit', (e) => {
     input.value = '';
   }
 });
+
+document.getElementById('form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent default form submission behavior
+    // Your message sending logic here
+});
+
